@@ -3,7 +3,6 @@ from ase.dft import DOS
 import matplotlib.pyplot as plt
 from ase.io import read
 
-
 # Load structure
 si = read('Opt.traj@-1')
 
@@ -16,11 +15,8 @@ si_doped = si.copy()
 # Replace the Silicon atom at the specified index with a Phosphorus atom
 si_doped[index_to_replace].symbol = 'P'
 
-
 # Need to add the new pseudopotential
-
 pseudopotentials = {'Si': 'Si.pbe-n-rrkjus_psl.1.0.0.UPF', 'P': 'P.pbe-n-rrkjus_psl.1.0.0.UPF'}
-
 
 input_data = {
     'control': {
