@@ -45,21 +45,21 @@ input_data = {
 calc = Espresso(pseudopotentials=pseudopotentials,
                 tstress=True, tprnfor=True, kpts=('3', '3', '3'), input_data=input_data)
 
-si.calc = calc
-si.get_potential_energy()
+si_doped.calc = calc
+si_doped.get_potential_energy()
 
 # Get the Fermi level
 fermi_level = calc.get_fermi_level()
 
 # Get the lattice and band path
-lattice = si.get_cell()
+lattice = si_doped.get_cell()
 bandpath = lattice.bandpath(npoints=100)
 
 # Set up the calculator for band structure calculation
 input_data['control'].update({'calculation':'bands','restart_mode':'restart','verbosity':'high'})
 
 calc.set(kpts=bandpath, input_data=input_data)
-calc.calculate(si)
+calc.calculate(si_doped)
 
 # Get the band structure and modify the energies
 bs = calc.band_structure()
