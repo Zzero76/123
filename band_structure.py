@@ -6,11 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 si = read('Opt.traj@-1')
-
-
 # Set up Quantum ESPRESSO calculator and other parameters (same as in your existing script)
-
-
 input_data = {
     'control': {
         'calculation': 'scf',
@@ -30,7 +26,6 @@ input_data = {
         'conv_thr': 1.0e-8,
     },
 }
-
 #Identify the index of a Silicon atom to replace with Phosphorus
 index_to_replace = 0  # Change this index to the desired Silicon atom index
 
@@ -42,17 +37,13 @@ si_doped[index_to_replace].symbol = 'P'
 
 
 # Need to add the new pseudopotential
-
 pseudopotentials = {'Si': 'Si.pbe-n-rrkjus_psl.1.0.0.UPF', 'P': 'P.pbe-n-rrkjus_psl.1.0.0.UPF'}
-
 
 calc = Espresso(pseudopotentials=pseudopotentials,
                 tstress=True, tprnfor=True, kpts=('3', '3', '3'), input_data=input_data)
 
 si.calc = calc
-
 si.get_potential_energy()
-
 
 # Get the Fermi level
 fermi_level = calc.get_fermi_level()
