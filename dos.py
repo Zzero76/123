@@ -43,10 +43,10 @@ calc = Espresso(pseudopotentials=pseudopotentials,
                 tstress=True, tprnfor=True, kpts=(12, 12, 12), input_data=input_data)
 
 # Attach the calculator to the Silicon atoms
-si.calc = calc
+si_doped.calc = calc
 
 # Perform SCF calculation
-si.get_potential_energy()
+si_doped.get_potential_energy()
 
 # Calculate DOS
 dos = DOS(calc, width=0.2)
