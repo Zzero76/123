@@ -7,6 +7,20 @@ import matplotlib.pyplot as plt
 
 si = read('Opt.traj@-1')
 # Set up Quantum ESPRESSO calculator and other parameters (same as in your existing script)
+
+#Identify the index of a Silicon atom to replace with Phosphorus
+index_to_replace = 0  # Change this index to the desired Silicon atom index
+
+# Create a copy of the Silicon unit cell
+si_doped = si.copy()
+
+# Replace the Silicon atom at the specified index with a Phosphorus atom
+si_doped[index_to_replace].symbol = 'P'
+
+
+# Need to add the new pseudopotential
+pseudopotentials = {'Si': 'Si.pbe-n-rrkjus_psl.1.0.0.UPF', 'P': 'P.pbe-n-rrkjus_psl.1.0.0.UPF'}
+
 input_data = {
     'control': {
         'calculation': 'scf',
@@ -26,18 +40,7 @@ input_data = {
         'conv_thr': 1.0e-8,
     },
 }
-#Identify the index of a Silicon atom to replace with Phosphorus
-index_to_replace = 0  # Change this index to the desired Silicon atom index
 
-# Create a copy of the Silicon unit cell
-si_doped = si.copy()
-
-# Replace the Silicon atom at the specified index with a Phosphorus atom
-si_doped[index_to_replace].symbol = 'P'
-
-
-# Need to add the new pseudopotential
-pseudopotentials = {'Si': 'Si.pbe-n-rrkjus_psl.1.0.0.UPF', 'P': 'P.pbe-n-rrkjus_psl.1.0.0.UPF'}
 
 calc = Espresso(pseudopotentials=pseudopotentials,
                 tstress=True, tprnfor=True, kpts=('3', '3', '3'), input_data=input_data)
