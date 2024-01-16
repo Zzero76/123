@@ -20,7 +20,6 @@ si_doped[index_to_replace].symbol = 'P'
 
 pseudopotentials = {'Si': 'Si.pbe-n-rrkjus_psl.1.0.0.UPF', 'P': 'P.pbe-n-rrkjus_psl.1.0.0.UPF'}
 
-pseudopotentials = {'Si': 'Si.pbe-n-rrkjus_psl.1.0.0.UPF'}
 
 input_data = {
     'control': {
@@ -47,7 +46,7 @@ calc = Espresso(pseudopotentials=pseudopotentials,
                 tstress=True, tprnfor=True, kpts=(12, 12, 12), input_data=input_data)
 
 # Attach the calculator to the Silicon atoms
-si.calc = calc
+si_doped.calc = calc
 
 # Perform SCF calculation
 si.get_potential_energy()
