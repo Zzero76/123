@@ -13,12 +13,12 @@ index_to_replace = 0  # Change this index to the desired Silicon atom index
 si_doped = si.copy()
 
 # Replace the Silicon atom at the specified index with a Phosphorus atom
-si_doped[index_to_replace].symbol = 'P'
+si_doped[index_to_replace].symbol = 'b'
 
 
 # Need to add the new pseudopotential
 
-pseudopotentials = {'Si': 'Si.pbe-n-rrkjus_psl.1.0.0.UPF', 'P': 'P.pbe-n-rrkjus_psl.1.0.0.UPF'}
+pseudopotentials = {'Si': 'Si.pbe-n-rrkjus_psl.1.0.0.UPF', 'b': 'b_pbe_v1.4.uspp.F.UPF'}
 
 
 input_data = {
