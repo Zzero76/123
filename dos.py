@@ -49,7 +49,7 @@ calc = Espresso(pseudopotentials=pseudopotentials,
 si_doped.calc = calc
 
 # Perform SCF calculation
-si.get_potential_energy()
+si_doped.get_potential_energy()
 
 # Calculate DOS
 dos = DOS(calc, width=0.2)
