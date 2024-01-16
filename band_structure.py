@@ -45,12 +45,11 @@ input_data = {
 }
 
 
-pseudopotentials = {'Si': 'Si.pbe-n-rrkjus_psl.1.0.0.UPF'}
 
 calc = Espresso(pseudopotentials=pseudopotentials,
                 tstress=True, tprnfor=True, kpts=('3', '3', '3'), input_data=input_data)
 
-si.calc = calc
+si_doped.calc = calc
 
 si.get_potential_energy()
 
